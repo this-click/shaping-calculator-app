@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Shaping Calculator</string>
+    <string name="row_gauge">Row gauge:</string>
+    <string name="shaping_length">Shaping length:</string>
+    <string name="total_number_of_increases_decreases">Total number of increases/decreases:</string>
+    <string name="number_of_increases_decreases_per_row">Number of increases/decreases per row:</string>
+    <string name="calculate">Calculate</string>
+</resources>
