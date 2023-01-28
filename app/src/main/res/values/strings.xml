@@ -6,8 +6,8 @@
     <string name="number_of_increases_decreases_per_row">Number of increases/decreases per row:</string>
     <string name="calculate">Calculate</string>
     <string name="your_shaping_rate">Your shaping rate:</string>
-    <string name="result_a_tooltip">For right side AND/OR wrong side shaping</string>
+    <string name="result_a_tooltip">For right side AND/OR wrong side shaping:</string>
     <string name="result_a">Every 3 rows, 7 times</string>
-    <string name="result_b_tooltip">For right side shaping</string>
+    <string name="result_b_tooltip">For right side shaping:</string>
     <string name="result_b">Every 3 rows, 7 times</string>
 </resources>

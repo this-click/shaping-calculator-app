@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,10 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rowGaugeTextView"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
 
     <TextView
@@ -41,10 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/shapingLengthTextView"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
 
     <TextView
@@ -61,10 +62,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/numberOfIncsTextView"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
 
     <TextView
@@ -81,10 +82,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/incsPerRowTextView"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
 
     <Button
@@ -107,49 +108,77 @@
         android:text="@string/your_shaping_rate"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@id/button" />
 
-    <TextView
-        android:id="@+id/result1LabelTextView"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardOne"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_20"
-        android:layout_marginTop="@dimen/margin_8"
-        android:text="@string/result_a_tooltip"
-        android:textStyle="italic"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/green_light"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/shapingRateTextView" />
+        app:layout_constraintTop_toBottomOf="@id/shapingRateTextView"
+        card_view:cardCornerRadius="10dp">
 
-    <TextView
-        android:id="@+id/result1TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/result_a"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result1LabelTextView" />
+        <TextView
+            android:id="@+id/result1LabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/result_a_tooltip"
+            android:textStyle="italic" />
 
-    <TextView
-        android:id="@+id/result2LabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_20"
-        android:layout_marginTop="20dp"
-        android:text="@string/result_b_tooltip"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result1TextView" />
+        <TextView
+            android:id="@+id/result1TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/result_a"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/result2TextView"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTwo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/result_b"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/green_light"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result2LabelTextView" />
+        app:layout_constraintTop_toBottomOf="@id/cardOne"
+        card_view:cardCornerRadius="10dp">
+
+        <TextView
+            android:id="@+id/result2LabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/result_b_tooltip"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result1TextView" />
+
+        <TextView
+            android:id="@+id/result2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/result_b"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
