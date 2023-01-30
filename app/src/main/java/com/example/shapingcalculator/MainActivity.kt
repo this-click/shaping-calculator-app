@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding.calculateButton.setOnClickListener {
             if (isEntryValid()) {
                 viewModel.addNewItem(
-                    binding.gaugeEditText.toString(),
+                    binding.gaugeEditText.text.toString(),
                     binding.lengthEditText.text.toString(),
                     binding.incsPerRowEditText.text.toString(),
                     binding.incsEditText.text.toString()
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(
-            binding.gaugeEditText.toString(),
+            binding.gaugeEditText.text.toString(),
             binding.lengthEditText.text.toString(),
             binding.incsPerRowEditText.text.toString(),
             binding.incsEditText.text.toString()
