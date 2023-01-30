@@ -141,7 +141,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTwo"
-        style="@style/Widget.ShapingCalculator.CardView"
+        style="@style/Widget.ShapingCalculator.CardView.Variant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

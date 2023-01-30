@@ -6,9 +6,8 @@
     <color name="purple">#86308e</color>
     <color name="purple_light">#c263ca</color>
     <color name="purple_dark">#501d55</color>
-    <color name="green">#8d8530</color>
-    <color name="green_light">#d4cd80</color>
-    <color name="green_light_variant">#f5f4e2</color>
-    <color name="green_light_variant_b">#cee4af</color>
+    <color name="green">#dcd99b</color>
+    <color name="green_light">#f5f4e2</color>
     <color name="green_dark">#54501d</color>
+    <color name="green_dark_variant">#53421d</color>
 </resources>
