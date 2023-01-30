@@ -3,8 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="purple_dark">#893f71</color>
-    <color name="purple_light">#9854ad</color>
-    <color name="green_light">#a1a373</color>
-    <color name="green_dark">#484B2E</color>
+    <color name="purple">#86308e</color>
+    <color name="purple_light">#c263ca</color>
+    <color name="purple_dark">#501d55</color>
+    <color name="green">#dcd99b</color>
+    <color name="green_light">#f5f4e2</color>
+    <color name="green_dark">#54501d</color>
+    <color name="green_dark_variant">#53421d</color>
 </resources>

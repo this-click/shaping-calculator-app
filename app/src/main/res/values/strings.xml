@@ -5,4 +5,9 @@
     <string name="total_number_of_increases_decreases">Total number of increases/decreases:</string>
     <string name="number_of_increases_decreases_per_row">Number of increases/decreases per row:</string>
     <string name="calculate">Calculate</string>
+    <string name="your_shaping_rate">Your shaping rate:</string>
+    <string name="result_a_tooltip">when shaping on ODD or EVEN rows:</string>
+    <string name="result_a">Every 3 rows, 7 times</string>
+    <string name="result_b_tooltip">when shaping only on EVEN rows:</string>
+    <string name="result_b">Every 4 rows, 7 times</string>
 </resources>
