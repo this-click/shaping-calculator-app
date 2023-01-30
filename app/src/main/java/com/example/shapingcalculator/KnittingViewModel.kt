@@ -1,6 +1,5 @@
 package com.example.shapingcalculator
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -14,12 +13,6 @@ class KnittingViewModel(private val itemDao: ShapedItemDao) : ViewModel() {
             itemDao.insert(item)
         }
     }
-
-//    private fun replaceItem(item: ShapedItem) {
-//        viewModelScope.launch {
-//            itemDao.replace(item)
-//        }
-//    }
 
     private fun getNewItemEntry(
         newRowGauge: String,

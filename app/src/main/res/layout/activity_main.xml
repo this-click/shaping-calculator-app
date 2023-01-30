@@ -62,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@id/lengthEditText" />
 
         <EditText
-            android:id="@+id/incsEditText"
+            android:id="@+id/incsTotalEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -79,7 +79,7 @@
             android:layout_marginStart="8dp"
             android:text="@string/number_of_increases_decreases_per_row"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/incsEditText" />
+            app:layout_constraintTop_toBottomOf="@id/incsTotalEditText" />
 
         <EditText
             android:id="@+id/incsPerRowEditText"
