@@ -1,5 +1,6 @@
 package com.example.shapingcalculator
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -8,16 +9,17 @@ import com.example.shapingcalculator.data.ShapedItemDao
 import kotlinx.coroutines.launch
 
 class KnittingViewModel(private val itemDao: ShapedItemDao) : ViewModel() {
+    private fun insertItem(item: ShapedItem) {
+        viewModelScope.launch {
+            itemDao.insert(item)
+        }
+    }
+
 //    private fun replaceItem(item: ShapedItem) {
 //        viewModelScope.launch {
-//            itemDao.insertOrReplace(item)
+//            itemDao.replace(item)
 //        }
 //    }
-private fun insertItem(item: ShapedItem) {
-    viewModelScope.launch {
-        itemDao.insertThis(item)
-    }
-}
 
     private fun getNewItemEntry(
         newRowGauge: String,
@@ -33,7 +35,12 @@ private fun insertItem(item: ShapedItem) {
         )
     }
 
-    fun addNewItem(rowGauge: String, shapingLength: String, increasesTotal: String, increasesRow: String) {
+    fun addNewItem(
+        rowGauge: String,
+        shapingLength: String,
+        increasesTotal: String,
+        increasesRow: String
+    ) {
         val newItem = getNewItemEntry(rowGauge, shapingLength, increasesTotal, increasesRow)
         insertItem(newItem)
     }
@@ -51,7 +58,8 @@ private fun insertItem(item: ShapedItem) {
     }
 }
 
-class KnittingViewModelFactory(private val shapedItemDao: ShapedItemDao) : ViewModelProvider.Factory {
+class KnittingViewModelFactory(private val shapedItemDao: ShapedItemDao) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(KnittingViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
