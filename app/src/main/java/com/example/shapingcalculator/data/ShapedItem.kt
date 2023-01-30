@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "shaped_item")
 data class ShapedItem(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
     @ColumnInfo(name = "row_gauge")
     val rowGauge: String,

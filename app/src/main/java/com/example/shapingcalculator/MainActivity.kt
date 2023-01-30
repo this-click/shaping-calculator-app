@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //TODO: display last saved values in Gauge etc if there's anything in the DB
+        //TODO: display a toast after adding new items
+
         binding.calculateButton.setOnClickListener {
             val view: View? = this.currentFocus
             closeSoftKeyboard(view)
@@ -31,8 +34,8 @@ class MainActivity : AppCompatActivity() {
                 viewModel.addNewItem(
                     binding.gaugeEditText.text.toString(),
                     binding.lengthEditText.text.toString(),
-                    binding.incsPerRowEditText.text.toString(),
-                    binding.incsEditText.text.toString()
+                    binding.incsTotalEditText.text.toString(),
+                    binding.incsPerRowEditText.text.toString()
                 )
             }
         }
@@ -42,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         return viewModel.isEntryValid(
             binding.gaugeEditText.text.toString(),
             binding.lengthEditText.text.toString(),
-            binding.incsPerRowEditText.text.toString(),
-            binding.incsEditText.text.toString()
+            binding.incsTotalEditText.text.toString(),
+            binding.incsPerRowEditText.text.toString()
         )
     }
 

@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Dao
 interface ShapedItemDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: ShapedItem)
 
 //    @Query("REPLACE INTO shaped_item (row_gauge, shaping_length, increases_total, increases_row) " +
