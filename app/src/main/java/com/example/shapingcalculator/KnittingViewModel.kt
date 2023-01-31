@@ -1,8 +1,6 @@
 package com.example.shapingcalculator
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.shapingcalculator.data.ShapedItem
 import com.example.shapingcalculator.data.ShapedItemDao
 import kotlinx.coroutines.launch
@@ -36,6 +34,10 @@ class KnittingViewModel(private val itemDao: ShapedItemDao) : ViewModel() {
     ) {
         val newItem = getNewItemEntry(rowGauge, shapingLength, increasesTotal, increasesRow)
         insertItem(newItem)
+    }
+
+    fun getItem(): LiveData<ShapedItem> {
+        return itemDao.getItemById().asLiveData()
     }
 
     fun isEntryValid(
