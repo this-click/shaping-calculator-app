@@ -1,60 +1,36 @@
 package com.example.shapingcalculator
 
-import android.content.Context
 import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.shapingcalculator.databinding.ActivityMainBinding
+import androidx.navigation.ui.setupActionBarWithNavController
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
-    private val viewModel: KnittingViewModel by viewModels {
-        KnittingViewModelFactory(
-            (application as KnittingApplication).database
-                .shapedItemDao()
-        )
-    }
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //TODO: display last saved values in Gauge etc if there's anything in the DB
-        //TODO: display a toast after adding new items
+        setSupportActionBar(binding.toolbar)
 
-        binding.calculateButton.setOnClickListener {
-            val view: View? = this.currentFocus
-            closeSoftKeyboard(view)
-
-            if (isEntryValid()) {
-                viewModel.addNewItem(
-                    binding.gaugeEditText.text.toString(),
-                    binding.lengthEditText.text.toString(),
-                    binding.incsTotalEditText.text.toString(),
-                    binding.incsPerRowEditText.text.toString()
-                )
-            }
-        }
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    private fun isEntryValid(): Boolean {
-        return viewModel.isEntryValid(
-            binding.gaugeEditText.text.toString(),
-            binding.lengthEditText.text.toString(),
-            binding.incsTotalEditText.text.toString(),
-            binding.incsPerRowEditText.text.toString()
-        )
-    }
-
-    private fun closeSoftKeyboard(view:View?) {
-        if (view != null) {
-            val imm: InputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
+    /**
+     * Handle navigation when the user chooses Up from the action bar.
+     */
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
