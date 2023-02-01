@@ -7,7 +7,7 @@
     <string name="calculate">Calculate</string>
     <string name="your_shaping_rate">Your shaping rate:</string>
     <string name="result_a_tooltip">when shaping on ODD or EVEN rows:</string>
-    <string name="result_a">Every 3 rows, 7 times</string>
+    <string name="shaping_rate">Every %1$s rows, %2$s times</string>
     <string name="result_b_tooltip">when shaping only on EVEN rows:</string>
     <string name="result_b">Every 4 rows, 7 times</string>
 </resources>
