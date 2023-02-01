@@ -16,9 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /* If this is missing, I get
-        "java.lang.IllegalStateException: Activity com.example.shapingcalculator.MainActivity@493e6dc
-        does not have an ActionBar set via setSupportActionBar() " */
+        /* Set ActionBar */
         setSupportActionBar(binding.toolbar)
 
         val navHostFragment = supportFragmentManager
