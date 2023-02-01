@@ -34,6 +34,14 @@ class CalculateShapingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getItem().observe(this.viewLifecycleOwner) { selectedItem ->
+            if (selectedItem != null) {
+                item = selectedItem
+                binding.result1TextView.text = item.increasesRow
+            }
+        }
+
         binding.calculateButton.setOnClickListener {
             if (isEntryValid()) {
                 viewModel.addNewItem(
