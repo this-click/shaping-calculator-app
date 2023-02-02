@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [ShapedItem::class], version = 2, exportSchema = false)
-abstract class ShapedItemRoomDatabase: RoomDatabase() {
+abstract class ShapedItemRoomDatabase : RoomDatabase() {
     abstract fun shapedItemDao(): ShapedItemDao
 
     companion object {

@@ -39,7 +39,7 @@ class KnittingViewModel(private val itemDao: ShapedItemDao) : ViewModel() {
     /* Get by ID is not needed since there's only one entry in the DB which gets overwritten
         whenever there's a change */
     fun getItem(): LiveData<ShapedItem> {
-        return itemDao.getItemById().asLiveData()
+        return itemDao.getItem().asLiveData()
     }
 
     fun isEntryValid(

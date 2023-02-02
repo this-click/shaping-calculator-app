@@ -38,17 +38,18 @@ class CalculateShapingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Displays data from DB, if any
         viewModel.getItem().observe(this.viewLifecycleOwner) { selectedItem ->
             if (selectedItem != null) {
                 item = selectedItem
-                //FIXME: Cards with new values after entering new values and tapping Calculate
+                //TODO: Implement refresh data after entering new values and tapping Calculate
                 shapingValues = calculateShaping(
                     item.rowGauge.toDouble(),
                     item.shapingLength.toDouble(),
                     item.increasesTotal.toInt(),
                     item.increasesRow.toInt()
                 )
-                // TODO: display placeholder while data is loaded from DB. Sometimes I can see $s
+                // TODO: display placeholder while data is loaded from DB
                 binding.result1TextView.text = resources.getString(
                     R.string.shaping_rate,
                     shapingValues[2], shapingValues[1]
@@ -60,6 +61,7 @@ class CalculateShapingFragment : Fragment() {
             }
         }
 
+        // Adds new data in DB
         binding.calculateButton.setOnClickListener {
             if (isEntryValid()) {
                 viewModel.addNewItem(
@@ -76,6 +78,7 @@ class CalculateShapingFragment : Fragment() {
         }
     }
 
+    // Checks all fields have values before inserting them in the database
     private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(
             binding.gaugeEditText.text.toString(),
@@ -85,6 +88,7 @@ class CalculateShapingFragment : Fragment() {
         )
     }
 
+    // Close soft keyboard when clicking on Calculate. Called if entries are valid
     private fun closeSoftKeyboard() {
         val imm =
             requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -97,20 +101,29 @@ class CalculateShapingFragment : Fragment() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
+    /* Determines the shaping rate, depending on:
+        - row gauge
+        - shaping length
+        - total number of stitches to increase or decrease
+        - number of stitches to increase or decrease per row
+        Returns:
+        - frequencyA, how many times to work shapingRateItrA
+        - frequencyB, shapingRateItrB
+        - shapingRateItrA, basic number of how many rows between increases or decreases
+        - shapingRateItrB, remainder of how many rows between increases or decreases
+        Since you can't work decimal stitches and rows, Ints are needed
+    */
     private fun calculateShaping(
         rowGauge: Double,
         shapingLength: Double,
         totalIncs: Int,
         incsPerRow: Int
     ): MutableList<String> {
-        /* See README for formula explanation */
-
         val overRows = shapingLength * rowGauge
         var nbIncsRow = incsPerRow
         if (incsPerRow == 0) {
             nbIncsRow += 1
         }
-        // TODO: Formula needs more work
         var shapingCalculated = totalIncs / nbIncsRow
         if (shapingCalculated == 0) {
             shapingCalculated += 1
@@ -119,21 +132,22 @@ class CalculateShapingFragment : Fragment() {
         val shapingRateItrA = floor(basicShapingRate)
         val shapingRateItrB = shapingRateItrA + 1
         val remainder = roundDownToTwoDecimals(overRows % shapingCalculated)
-        val rateFactorA = roundDownToTwoDecimals(shapingCalculated - remainder)
-        val rateFactorB = remainder
+        val frequencyA = roundDownToTwoDecimals(shapingCalculated - remainder)
+        val frequencyB = remainder
 
         shapingValues.addAll(
             arrayListOf(
-                rateFactorA.toString(),
-                rateFactorB.toString(),
-                shapingRateItrA.toString(),
-                shapingRateItrB.toString()
+                frequencyA.toInt().toString(),
+                frequencyB.toInt().toString(),
+                shapingRateItrA.toInt().toString(),
+                shapingRateItrB.toInt().toString()
             )
         )
 
         return shapingValues
     }
 
+    // It is recommended to use 2 decimals for better shaping accuracy
     private fun roundDownToTwoDecimals(amount: Double): Double {
         // Need BigDec to format with 2 decimals
         val bigDecimal = amount.toBigDecimal().setScale(2, RoundingMode.FLOOR)
