@@ -1,4 +1,4 @@
-An work in progress app to help shape my knitting projects.
+A work in progress app to help shape my knitting projects.
 
 Based on Roxanne Richardson's spreadsheet, this app supports my hobby and demonstrates data persistence using Room library.
 
