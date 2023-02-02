@@ -5,5 +5,6 @@ Based on Roxanne Richardson's spreadsheet, this app supports my hobby and demons
 https://docs.google.com/spreadsheets/d/1TTq3sI0qEq8_aaIz757MwZ3q_gAMhahi08CIr_TE39M
 
 TODOs:
-
-Fix issues and merge add-data-persistence branch
+1. Display a toast after adding new items
+2. Implement refresh data after entering new values and tapping Calculate
+3. Display placeholder while data is loaded from DB so user doesn't see the string templates
